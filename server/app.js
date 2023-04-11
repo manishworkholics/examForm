@@ -37,6 +37,7 @@ const getproduct = require('./Route/userRoute')
 const deleteproduct = require('./Route/userRoute')
 const updateproduct = require('./Route/userRoute')
 const basicInfo = require('./Route/formRoute')
+const editInfo = require('./Route/formRoute')
 
 app.use('/api/v1', register)
 app.use('/api/v1', showuser)
@@ -50,6 +51,7 @@ app.use('/api/v1', getproduct)
 app.use('/api/v1', deleteproduct)
 app.use('/api/v1', updateproduct)
 app.use('/api/v1', basicInfo)
+app.use('/api/v1', editInfo)
 
 const upload = multer({
     storage: multer.diskStorage({
