@@ -19,3 +19,11 @@ exports.basicInfo = async(req,res)=>{
         res.status(400).json({error:"Server Issue"})
     }    
 }
+
+exports.editInfo = async(req,res)=>{
+    let data = await user.updateOne(
+        { _id: req.params.id },
+        { $set: req.body }
+    )
+    res.send(data)
+}
