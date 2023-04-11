@@ -11,7 +11,7 @@ body {
   font-family: sans-serif;
   line-height: 1.7;
   color: var(--body);
-  background-color: #e7e7e7;
+  background-color: #fdfdfd;
 }
 
 h1,
@@ -151,7 +151,12 @@ section {
   font-weight: 500;
   
 }
-
+.form-label{
+  font-size: 13px;
+  color: black;
+  font-weight: 700;
+  line-height: initial;
+}
 
 
 @media all and (max-width: 600px) {
