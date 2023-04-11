@@ -27,6 +27,7 @@ const Formone = () => {
   };
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
+  const [localStorageValue, SetlocalStorageValue] = useState("");
   const {
     fname,
     mname,
@@ -56,7 +57,6 @@ const Formone = () => {
   };
 
   const AddData = async (userData) => {
-   
     // const add = await axios.post(`${URL}/users/login`, userData);
     // setLoginTextChange("Please Wait...");
     try {
@@ -64,11 +64,10 @@ const Formone = () => {
       if (add.status == 200) {
         const okcheck = await add.data;
         console.log(okcheck);
-        // localStorage.setItem("token", okcheck.token);
-        // SetlocalStorageValue(localStorage.getItem("token"));
-        // toast.success("LoginSuccessful...");
-
-        navigate("/exam");
+        localStorage.setItem("token", okcheck.token);
+        SetlocalStorageValue(localStorage.getItem("token"));
+        toast.success("LoginSuccessful...");
+        navigate("/form-two");
       }
     } catch (error) {
       // setLoginClick('');
@@ -119,6 +118,10 @@ const Formone = () => {
       !cast
     ) {
       toast.error("Please fill out all fields");
+      return;
+    }
+    if (contactnumber.length > 10) {
+      toast.error("Please Enter Less Number . Not More Then 10 Digit");
       return;
     }
 

@@ -11,6 +11,7 @@ import Addchapter from './components/pages/Addchapter';
 import Addvideo from './components/pages/Addvideo';
 import Detail from './components/pages/Detail';
 import Formone from './components/pages/Formone';
+import Formtwo from './components/pages/Formtwo';
 const root = ReactDOM.createRoot(
     document.getElementById("root")
 );
@@ -26,6 +27,7 @@ root.render(
                 <Route path='add-chapter' element={<Addchapter />} />
                 <Route path='add-video' element={<Addvideo />} />
                 <Route path='form-one' element={<Formone />} />
+                <Route path='form-two/:id' element={<Formtwo />} />
                
                 <Route path='detail' element={<Detail />} />
             </Route>
