@@ -14,10 +14,16 @@ const formSchema = new mongoose.Schema({
     email : {
         type: String,
     },
-    phone : {
+    contactcountry : {
         type: String,
     },
-    houseNo : {
+    contactnumber : {
+        type: String,
+    },
+    houseno : {
+        type: String,
+    },
+    city : {
         type: String,
     },
     street : {
@@ -26,7 +32,7 @@ const formSchema = new mongoose.Schema({
     pincode : {
         type: String,
     },
-    DOB : {
+    dob : {
         type: String,
     },
     fathername : {
@@ -87,7 +93,7 @@ const formSchema = new mongoose.Schema({
         type : String,
     },
     yearOfPassing12th :{
-        type : Date,
+        type : String,
     },
     school12th :{
         type : String,
