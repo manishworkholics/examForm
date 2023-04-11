@@ -4,84 +4,131 @@ const mongoose = require('mongoose')
 const formSchema = new mongoose.Schema({
     firstname : {
         type: String,
-        maxlength :50,
-        required: true
     },
     middlename : {
         type : String,
-        maxlength :50
     },
     lastname : {
         type: String,
-        maxlength :50,
-        required: true
     },
     email : {
         type: String,
-        maxlength :100,
-        required: true
     },
     phone : {
-        type: Number,
-        required: true    
+        type: String,
     },
     address : {
         type: String,
-        maxlength : 300,
-        required: true
     },
     DOB : {
-        type: Date,
-        required: true
+        type: String,
     },
     fathername : {
         type: String,
-        required: true
     },
     mothername : {
         type: String,
-        required: true
     },
     gender : {
         type: String,
-        enum :['male','female','transgender'],
-        required: true
     },
     maritalstatus : {
         type: String,
-        enum : ['single','married','widow','widower','divorced','seperated'],
-        required: true
     },
     disability: {
-        hasDisability: {
-          type: Boolean,
-          required: true
-        },
-        disabilityDetails: {
-          type: String,
-          required: function () {
-            return this.hasDisability === true;
-          }
-        }
+        type: String,
     },
     category : {
         type: String,
-        enum : ['general','OBC','SCST','AWS'],
-        required: true
     },
     domicile : {
         type: String,
-        required: true
     },
     cast : {
         type: String,
-        required: true
     },
     captcha :{
         type : String,
-        required: true
     },
-    status: { type: Number, default: 0 },
+    yearOfPassing10th :{
+        type : String,
+    },
+    school10th :{
+        type : String,
+    },
+    board10th :{
+        type : String,
+    },
+    rollNo10th :{
+        type : String,
+    },
+    subjectDetails10th :[{
+        subject1 :{ type : String},
+        marks :{type : String},
+        subject2 :{ type : String},
+        marks :{type : String},
+        subject3 :{ type : String},
+        marks :{type : String},
+        subject4 :{ type : String},
+        marks :{type : String},
+        subject5 :{ type : String},
+        marks :{type : String}
+    }],
+    totalMarks10th :{
+        type : String,
+    },
+    percentage10th :{
+        type : String,
+    },
+    yearOfPassing12th :{
+        type : Date,
+    },
+    school12th :{
+        type : String,
+    },
+    board12th :{
+        type : String,
+    },
+    rollNo12th :{
+        type : String,
+    },
+    subjectDetails12th :[{
+        subject1 :{ type : String},
+        marks :{type : String},
+        subject2 :{ type : String},
+        marks :{type : String},
+        subject3 :{ type : String},
+        marks :{type : String},
+        subject4 :{ type : String},
+        marks :{type : String},
+        subject5 :{ type : String},
+        marks :{type : String}
+    }],
+    totalMarks12th :{
+        type : String,
+    },
+    percentage12th :{
+        type : String,
+    },
+    profilePicture :{
+        type : String
+    },
+    signature :{
+        type : String
+    },
+    domicileCertificate :{
+        type : String
+    },
+    marksheet10th :{
+        type : String
+    },
+    marksheet12th :{
+        type : String
+    },
+    aadharCard :{
+        type : String
+    },
+    status: { type: String, default: 0 },
     created_at: { type: Date },
     updated_at: { type: Date, default: Date.now },
 })
