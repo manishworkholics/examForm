@@ -6,13 +6,14 @@ const URL = "http://localhost:5000/api/v1";
 
 const Formone = () => {
   const initialState = {
-    fname: "",
-    mname: "",
-    lname: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
     email: "",
-    contact: "",
+    contactcountry: "",
+    contactnumber: "",
     houseno: "",
-    road: "",
+    street: "",
     city: "",
     pincode: "",
     dob: "",
@@ -29,14 +30,14 @@ const Formone = () => {
   const [values, setValues] = useState(initialState);
   const [localStorageValue, SetlocalStorageValue] = useState("");
   const {
-    fname,
-    mname,
-    lname,
+    firstname,
+    middlename,
+    lastname,
     email,
     contactcountry,
     contactnumber,
     houseno,
-    road,
+    street,
     city,
     pincode,
     dob,
@@ -57,16 +58,20 @@ const Formone = () => {
   };
 
   const AddData = async (userData) => {
+    alert();
     // const add = await axios.post(`${URL}/users/login`, userData);
     // setLoginTextChange("Please Wait...");
     try {
-      const add = await axios.post(`${URL}/users/login`, userData);
-      if (add.status == 200) {
+      const add = await axios.post(
+        `${URL}/formeducation/AddFormData`,
+        userData
+      );
+      if (add.status == 201) {
         const okcheck = await add.data;
         console.log(okcheck);
-        localStorage.setItem("token", okcheck.token);
-        SetlocalStorageValue(localStorage.getItem("token"));
-        toast.success("LoginSuccessful...");
+        // localStorage.setItem("token", okcheck.token);
+        // SetlocalStorageValue(localStorage.getItem("token"));
+        toast.success("Successfully ...");
         navigate("/form-two");
       }
     } catch (error) {
@@ -77,14 +82,14 @@ const Formone = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const {
-      fname,
-      mname,
-      lname,
+      firstname,
+      middlename,
+      lastname,
       email,
       contactcountry,
       contactnumber,
       houseno,
-      road,
+      street,
       city,
       pincode,
       dob,
@@ -97,14 +102,15 @@ const Formone = () => {
       domicile,
       cast,
     } = values;
+
     if (
-      !fname ||
-      !lname ||
+      !firstname ||
+      !lastname ||
       !email ||
       !contactcountry ||
       !contactnumber ||
       !houseno ||
-      !road ||
+      !street ||
       !city ||
       !pincode ||
       !dob ||
@@ -137,46 +143,45 @@ const Formone = () => {
           <div className="col-md-6">
             <form onSubmit={onSubmit}>
               <div className="mb-3 mt-3">
-                <label for="fname" className="form-label">
+                <label for="firstname" className="form-label">
                   First name:
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  id="fname"
+                  id="firstname"
                   placeholder="Enter First Name"
-                  name="fname"
-                  value={fname}
+                  name="firstname"
+                  value={firstname}
                   required
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-3 mt-3">
-                <label for="mname" className="form-label">
+                <label for="middlename" className="form-label">
                   Middle name:
                 </label>
                 <input
                   type="text"
-                  value={mname}
+                  value={middlename}
                   className="form-control"
-                  id="mname"
+                  id="middlename"
                   placeholder="Enter Middle Name"
-                  name="mname"
-                  required
+                  name="middlename"
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-3 mt-3">
-                <label for="lname" className="form-label">
+                <label for="lastname" className="form-label">
                   Last name:
                 </label>
                 <input
-                  value={lname}
+                  value={lastname}
                   type="text"
                   className="form-control"
-                  id="lname"
+                  id="lastname"
                   placeholder="Enter Last Name"
-                  name="lname"
+                  name="lastname"
                   required
                   onChange={handleChange}
                 />
@@ -210,8 +215,9 @@ const Formone = () => {
                     value={contactcountry}
                     onChange={handleChange}
                   >
-                    <option value="">+91</option>
-                    <option value="">+92</option>
+                    <option>Select</option>
+                    <option value="91">+91</option>
+                    <option value="92">+92</option>
                   </select>
                 </span>
                 <input
@@ -237,12 +243,12 @@ const Formone = () => {
                   onChange={handleChange}
                 />
                 <input
-                  value={road}
+                  value={street}
                   type="text"
                   className="form-control mt-3"
-                  id="road"
-                  placeholder="Road"
-                  name="road"
+                  id="street"
+                  placeholder="street"
+                  name="street"
                   required
                   onChange={handleChange}
                 />
@@ -323,6 +329,7 @@ const Formone = () => {
                   value={gender}
                   onChange={handleChange}
                 >
+                  <option>Select</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
@@ -337,6 +344,7 @@ const Formone = () => {
                   value={maritalstatus}
                   onChange={handleChange}
                 >
+                  <option>Select</option>
                   <option value="married">Married</option>
                   <option value="unmarried" selected>
                     Un Married
@@ -353,6 +361,7 @@ const Formone = () => {
                   value={disability}
                   onChange={handleChange}
                 >
+                  <option>Select</option>
                   <option value="yes">Yes</option>
                   <option value="no" selected>
                     No
@@ -369,6 +378,7 @@ const Formone = () => {
                   value={category}
                   onChange={handleChange}
                 >
+                  <option>Select</option>
                   <option value="general">General </option>
                   <option selected value="GENERAL">
                     General
@@ -389,6 +399,7 @@ const Formone = () => {
                   value={domicile}
                   onChange={handleChange}
                 >
+                  <option>Select</option>
                   <option value="MP">MP </option>
                   <option value="OTHER" selected>
                     OTHER
@@ -406,9 +417,8 @@ const Formone = () => {
                   value={cast}
                   onChange={handleChange}
                 >
-                  <option selected value="GENERAL">
-                    General{" "}
-                  </option>
+                  <option>Select</option>
+                  <option value="GENERAL">General </option>
                   <option value="OBC">OBC</option>
                   <option value="ST">ST</option>
                   <option value="SC">SC</option>
