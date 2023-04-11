@@ -134,6 +134,12 @@ const formSchema = new mongoose.Schema({
     aadharCard :{
         type : String
     },
+    selectDepartment :{
+        type : String
+    },
+    selectBranch :{
+        type : String
+    },
     status: { type: String, default: 0 },
     created_at: { type: Date },
     updated_at: { type: Date, default: Date.now },
