@@ -17,7 +17,13 @@ const formSchema = new mongoose.Schema({
     phone : {
         type: String,
     },
-    address : {
+    houseNo : {
+        type: String,
+    },
+    street : {
+        type: String,
+    },
+    pincode : {
         type: String,
     },
     DOB : {
