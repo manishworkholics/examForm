@@ -122,6 +122,33 @@ const formSchema = new mongoose.Schema({
     percentage12th :{
         type : String,
     },
+    yearOfPassingdiploma :{
+        type : String,
+    },
+    universitydiploma :{
+        type : String,
+    },
+    enrollmentnodiploma :{
+        type : String,
+    },
+    finalsemsubjectdiploma :[{
+        subject1 :{ type : String},
+        marks :{type : String},
+        subject2 :{ type : String},
+        marks :{type : String},
+        subject3 :{ type : String},
+        marks :{type : String},
+        subject4 :{ type : String},
+        marks :{type : String},
+        subject5 :{ type : String},
+        marks :{type : String}
+    }],
+    totalMarksdiploma :{
+        type : String,
+    },
+    percentagediploma :{
+        type : String,
+    },
     profilePicture :{
         type : String
     },
@@ -144,6 +171,12 @@ const formSchema = new mongoose.Schema({
         type : String
     },
     selectBranch :{
+        type : String
+    },
+    yeargap : {
+        type : String
+    },
+    applicationfee :{
         type : String
     },
     status: { type: String, default: 0 },
