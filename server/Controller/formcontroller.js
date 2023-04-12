@@ -1,14 +1,13 @@
 const {user} = require('../Modal/formmodal')
 const jwt = require('jsonwebtoken')
 exports.basicInfo = async(req,res)=>{
-    const {firstname,middlename,lastname,email,contactcountry,contactnumber,houseno,city,street,pincode,dob,fathername,mothername,
+    const {firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,
         gender,maritalstatus,disability,category,domicile,cast,captcha,yearOfPassing10th,school10th,board10th,
         rollNo10th,subjectDetails10th,totalMarks10th,percentage10th,yearOfPassing12th,school12th,board12th,
-        rollNo12th,subjectDetails12th,totalMarks12th,percentage12th,yearOfPassingdiploma,universitydiploma,enrollmentnodiploma,
-        finalsemsubjectdiploma,totalMarksdiploma,percentagediploma,profilePicture,signature,domicileCertificate,
-        marksheet10th,marksheet12th,aadharCard,selectDepartment,selectBranch,yeargap,applicationfee} = req.body 
+        rollNo12th,subjectDetails12th,totalMarks12th,percentage12th,profilePicture,signature,domicileCertificate,
+        marksheet10th,marksheet12th,aadharCard} = req.body 
     try {
-        const data = new user({firstname,middlename,lastname,email,contactcountry,contactnumber,houseno,city,street,pincode,dob,fathername,mothername,
+        const data = new user({firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,
             gender,maritalstatus,disability,category,domicile,cast,captcha,yearOfPassing10th,school10th,board10th,
             rollNo10th,subjectDetails10th,totalMarks10th,percentage10th,yearOfPassing12th,school12th,board12th,
             rollNo12th,subjectDetails12th,totalMarks12th,percentage12th,yearOfPassingdiploma,universitydiploma,enrollmentnodiploma,
