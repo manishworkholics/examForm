@@ -75,16 +75,16 @@ const formSchema = new mongoose.Schema({
         type : String,
     },
     subjectDetails10th :[{
-        subject1 :{ type : String},
-        marks :{type : String},
-        subject2 :{ type : String},
-        marks :{type : String},
-        subject3 :{ type : String},
-        marks :{type : String},
-        subject4 :{ type : String},
-        marks :{type : String},
-        subject5 :{ type : String},
-        marks :{type : String}
+        Xsubject1 :{ type : String},
+        Xmarks1 :{type : String},
+        Xsubject2 :{ type : String},
+        Xmarks2 :{type : String},
+        Xsubject3 :{ type : String},
+        Xmarks3 :{type : String},
+        Xsubject4 :{ type : String},
+        Xmarks4 :{type : String},
+        Xsubject5 :{ type : String},
+        Xmarks5 :{type : String}
     }],
     totalMarks10th :{
         type : String,
@@ -105,16 +105,16 @@ const formSchema = new mongoose.Schema({
         type : String,
     },
     subjectDetails12th :[{
-        subject1 :{ type : String},
-        marks :{type : String},
-        subject2 :{ type : String},
-        marks :{type : String},
-        subject3 :{ type : String},
-        marks :{type : String},
-        subject4 :{ type : String},
-        marks :{type : String},
-        subject5 :{ type : String},
-        marks :{type : String}
+        XIIsubject1 :{ type : String},
+        XIImarks1 :{type : String},
+        XIIsubject2 :{ type : String},
+        XIImarks2 :{type : String},
+        XIIsubject3 :{ type : String},
+        XIImarks3 :{type : String},
+        XIIsubject4 :{ type : String},
+        XIImarks4 :{type : String},
+        XIIsubject5 :{ type : String},
+        XIImarks5 :{type : String}
     }],
     totalMarks12th :{
         type : String,
@@ -132,16 +132,16 @@ const formSchema = new mongoose.Schema({
         type : String,
     },
     finalsemsubjectdiploma :[{
-        subject1 :{ type : String},
-        marks :{type : String},
-        subject2 :{ type : String},
-        marks :{type : String},
-        subject3 :{ type : String},
-        marks :{type : String},
-        subject4 :{ type : String},
-        marks :{type : String},
-        subject5 :{ type : String},
-        marks :{type : String}
+        diplomasubject1 :{ type : String},
+        diplomamarks1 :{type : String},
+        diplomasubject2 :{ type : String},
+        diplomamarks2 :{type : String},
+        diplomasubject3 :{ type : String},
+        diplomamarks3 :{type : String},
+        diplomasubject4 :{ type : String},
+        diplomamarks4 :{type : String},
+        diplomasubject5 :{ type : String},
+        diplomamarks5 :{type : String}
     }],
     totalMarksdiploma :{
         type : String,
@@ -177,6 +177,9 @@ const formSchema = new mongoose.Schema({
         type : String
     },
     applicationfee :{
+        type : String
+    },
+    token :{
         type : String
     },
     status: { type: String, default: 0 },
