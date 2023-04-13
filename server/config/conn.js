@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://virajkaleworkholic:virajkaleworkholicgmailcom@cluster0.jag9pvj.mongodb.net/form2').then((data)=>{
+mongoose.connect('mongodb://localhost:27017/demo').then((data)=>{
     console.log('connected')
 }).catch((err)=>{
     console.log(err)

@@ -28,7 +28,6 @@ root.render(
                 <Route path='add-video' element={<Addvideo />} />
                 <Route path='form-one' element={<Formone />} />
                 <Route path='form-two/:id' element={<Formtwo />} />
-               
                 <Route path='detail' element={<Detail />} />
             </Route>
         </Routes>
