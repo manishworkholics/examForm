@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-const {user} = require('../Modal/formmodal')
-const jwt = require('jsonwebtoken')
-=======
+
+
+
 const {user,universityAdmin,program, college} = require('../Modal/formmodal')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -95,7 +94,7 @@ exports.addCollege = async(req,res)=>{
   }      
 }
 
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
+
 exports.basicInfo = async(req,res)=>{
     const {firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,
         gender,maritalstatus,disability,category,domicile,cast,captcha,yearOfPassing10th,school10th,board10th,
