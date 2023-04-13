@@ -1,17 +1,18 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/pages/Home';
-import PageNotFound from './components/pages/PageNotFound';
+import Home from './pages/Home';
+import PageNotFound from './pages/PageNotFound';
 import App from './App';
 import './App.css';
-import Addexam from './components/pages/Addexam';
-import Addsubject from './components/pages/Addsubject';
-import Addunit from './components/pages/Addunit';
-import Addchapter from './components/pages/Addchapter';
-import Addvideo from './components/pages/Addvideo';
-import Detail from './components/pages/Detail';
-import Formone from './components/pages/Formone';
-import Formtwo from './components/pages/Formtwo';
+import Addexam from './pages/Addexam';
+import Addsubject from './pages/Addsubject';
+import Addunit from './pages/Addunit';
+import Addchapter from './pages/Addchapter';
+import Addvideo from './pages/Addvideo';
+import Detail from './pages/Detail';
+import Formone from './pages/Formone';
+import Formtwo from './pages/Formtwo';
+import Login from './pages/Login';
 const root = ReactDOM.createRoot(
     document.getElementById("root")
 );
@@ -29,7 +30,10 @@ root.render(
                 <Route path='form-one' element={<Formone />} />
                 <Route path='form-two/:id' element={<Formtwo />} />
                 <Route path='detail' element={<Detail />} />
+                <Route path='login' element={<Login />} />
+                {/* <Route path="dashboard" element={<Dashboard/>} */}
             </Route>
+           
         </Routes>
     </BrowserRouter>
 );
