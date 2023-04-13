@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Formtwo = () => {
+const Register = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Formtwo = () => {
   )
 }
 
-export default Formtwo
+export default Register

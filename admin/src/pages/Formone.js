@@ -66,19 +66,28 @@ const Formone = () => {
         `${URL}/formeducation/AddFormData`,
         userData
       );
-      if (add.status == 201) {
+      if (add.status === 201) {
         const okcheck = await add.data;
+        const okcheck2=okcheck.data;
+        const getid_fromdata=okcheck2._id;
         console.log(okcheck);
-        // localStorage.setItem("token", okcheck.token);
-        // SetlocalStorageValue(localStorage.getItem("token"));
+         localStorage.setItem("token", okcheck.token);
+         SetlocalStorageValue(localStorage.getItem("token"));
+        // const config = {
+        //   headers: {
+        //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //     "Content-Type": "application/json",
+        //   },
+        // };
         toast.success("Successfully ...");
-        navigate("/form-two");
+        navigate(`/form-two/${getid_fromdata}`);
       }
     } catch (error) {
       // setLoginClick('');
       toast.error("Invalid Credintials...");
     }
   };
+  
   const onSubmit = (e) => {
     e.preventDefault();
     const {
