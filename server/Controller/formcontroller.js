@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-const {user} = require('../Modal/formmodal')
-const jwt = require('jsonwebtoken')
-=======
+
+
+
 const {user,universityAdmin,program, college} = require('../Modal/formmodal')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -22,9 +21,7 @@ exports.registerUniversityAdmin = async(req,res)=>{
   }        
   try {
       const adminData = new universityAdmin({firstName,middleName,lastName,email,phone,alternatePhone,post,
-                            photo,permissions,isBlocked,username,password,houseNo,street,district,country})
-      const token = jwt.sign({adminData_id: adminData.id},process.env.JWT_SECRET_KEY)
-      adminData.token = token    
+                            photo,permissions,isBlocked,username,password,houseNo,street,district,country})   
       await adminData.save()
       res.status(201).json(adminData)    
   } catch (error) {
@@ -44,14 +41,13 @@ exports.loginUniversityAdmin = async(req,res)=>{
         return res.status(402).json({error :"username not found" })
       }
       const isMatch = await bcrypt.compare(password,userlogin.password)
-
       if(!isMatch){
         return res.json({ error : "Invalid Credentials" });
       }
-      else {
-        res.status(400).json({message : "Login Success"})
+      const token = jwt.sign({userlogin_id: userlogin.id},process.env.JWT_SECRET_KEY)
+      res.status(400).json({token})
         
-      }
+      
     } catch (error) {
       console.log(error)
     }
@@ -95,7 +91,7 @@ exports.addCollege = async(req,res)=>{
   }      
 }
 
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
+
 exports.basicInfo = async(req,res)=>{
     const {firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,
         gender,maritalstatus,disability,category,domicile,cast,captcha,yearOfPassing10th,school10th,board10th,
