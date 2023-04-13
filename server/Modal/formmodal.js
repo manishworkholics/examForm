@@ -51,9 +51,7 @@ const universityAdminSchema = new mongoose.Schema({
     country : {
         type : String
     }, 
-    token : {
-        type : String
-    }
+   
 })
 universityAdminSchema.pre('save', async function (next) {
     if (this.isModified('password')) {
