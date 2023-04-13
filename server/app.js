@@ -6,6 +6,7 @@ const app = express()
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const path = require('path');
+
 // app.use(cors({ origin: "http://206.189.130.102" }))
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*'); 
@@ -36,8 +37,15 @@ const addorder = require('./Route/userRoute')
 const getproduct = require('./Route/userRoute')
 const deleteproduct = require('./Route/userRoute')
 const updateproduct = require('./Route/userRoute')
+
+const registerUniversityAdmin = require('./Route/formRoute')
 const basicInfo = require('./Route/formRoute')
 const editInfo = require('./Route/formRoute')
+const sendEmail = require('./Route/formRoute')
+const loginUniversityAdmin = require('./Route/formRoute')
+const addProgram = require('./Route/formRoute');
+const addCollege  = require('./Route/formRoute');
+
 
 app.use('/api/v1', register)
 app.use('/api/v1', showuser)
@@ -50,8 +58,14 @@ app.use('/api/v1', addorder)
 app.use('/api/v1', getproduct)
 app.use('/api/v1', deleteproduct)
 app.use('/api/v1', updateproduct)
+
+app.use('/api/v1', registerUniversityAdmin)
 app.use('/api/v1', basicInfo)
 app.use('/api/v1', editInfo)
+app.use('/api/v1', sendEmail)
+app.use('/api/v1', loginUniversityAdmin)
+app.use('/api/v1', addProgram)
+app.use('/api/v1', addCollege)
 
 const upload = multer({
     storage: multer.diskStorage({

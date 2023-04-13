@@ -1,0 +1,98 @@
+{
+    "users" : [
+        {
+            "firstname": "Sarthak",
+            "middlename": "",
+            "lastname": "solanki",
+            "email": "sarthaksolanki001@gmail.com",
+            "fathername": "Rakesh Solanki",
+            "mothername": "Deepali Solanki",
+            "gender": "male",
+            "maritalstatus": "single",
+            "disability": "no",
+            "category": "OBC",
+            "domicile": "M.P.",
+            "cast": "darji",
+            "captcha": "fghjE",
+            "yearOfPassing10th": "2017",
+            "school10th": "Agarwal Public School",
+            "board10th": "CBSE",
+            "rollNo10th": "762479689012",
+            "subjectDetails10th": [
+                {
+                    "Xsubject1": "Maths",
+                    "Xmarks1": "90",
+                    "_id": "64364e16b73c0be585d588c8"
+                },
+                {
+                    "Xsubject2": "Science",
+                    "Xmarks2": "80",
+                    "_id": "64364e16b73c0be585d588c9"
+                },
+                {
+                    "Xsubject3": "English",
+                    "Xmarks3": "95",
+                    "_id": "64364e16b73c0be585d588ca"
+                },
+                {
+                    "Xsubject4": "Social",
+                    "Xmarks4": "70",
+                    "_id": "64364e16b73c0be585d588cb"
+                },
+                {
+                    "Xsubject5": "Hindi",
+                    "Xmarks5": "80",
+                    "_id": "64364e16b73c0be585d588cc"
+                }
+            ],
+            "totalMarks10th": "420",
+            "percentage10th": "90%",
+            "subjectDetails12th": [],
+            "yearOfPassingdiploma": "2019",
+            "universitydiploma": "Agarwal Public School",
+            "finalsemsubjectdiploma": [
+                {
+                    "diplomasubject1": "Maths",
+                    "diplomamarks1": "90",
+                    "_id": "64364e16b73c0be585d588cd"
+                },
+                {
+                    "diplomasubject2": "Science",
+                    "diplomamarks2": "80",
+                    "_id": "64364e16b73c0be585d588ce"
+                },
+                {
+                    "diplomasubject3": "English",
+                    "diplomamarks3": "95",
+                    "_id": "64364e16b73c0be585d588cf"
+                },
+                {
+                    "diplomasubject4": "Social",
+                    "diplomamarks4": "70",
+                    "_id": "64364e16b73c0be585d588d0"
+                },
+                {
+                    "diplomasubject5": "Hindi",
+                    "diplomamarks5": "80",
+                    "_id": "64364e16b73c0be585d588d1"
+                }
+            ],
+            "totalMarksdiploma": "420",
+            "percentagediploma": "90%",
+            "profilePicture": "gjhk",
+            "signature": "safj",
+            "domicileCertificate": "M.P.",
+            "marksheet10th": "gvhjk",
+            "marksheet12th": "gvhjk",
+            "aadharCard": "gvhjk",
+            "selectDepartment": "Engineering",
+            "selectBranch": "CS",
+            "applicationfee": "1000",
+            "status": "0",
+            "_id": "64364e16b73c0be585d588c7",
+            "updated_at": "2023-04-12T06:22:14.256Z",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhX2lkIjoiNjQzNjRlMTZiNzNjMGJlNTg1ZDU4OGM3IiwiaWF0IjoxNjgxMjgwNTM0fQ.NC1unPghBRME3NQuK4izA2BWLeOJHn-gnR6N58J4KlA",
+            "__v": 0
+        }
+    ]
+}
