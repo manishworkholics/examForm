@@ -1,3 +1,6 @@
+
+
+
 const {user,universityAdmin,program, college} = require('../Modal/formmodal')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -87,6 +90,7 @@ exports.addCollege = async(req,res)=>{
     res.status(400).json({error : "Check all the fields properly"})
   }      
 }
+
 
 exports.basicInfo = async(req,res)=>{
     const {firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,
