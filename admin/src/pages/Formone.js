@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-const URL = "http://localhost:4001/api/v1/basic-info";
+const URL = "http://localhost:5000/api/v1";
 
 const Formone = () => {
   const initialState = {
@@ -10,14 +10,6 @@ const Formone = () => {
     middlename: "",
     lastname: "",
     email: "",
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-    phone: "",
-    address: "",
-    DOB: "",
-=======
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
     contactcountry: "",
     contactnumber: "",
     houseno: "",
@@ -25,7 +17,6 @@ const Formone = () => {
     city: "",
     pincode: "",
     dob: "",
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
     fathername: "",
     mothername: "",
     gender: "",
@@ -37,16 +28,12 @@ const Formone = () => {
   };
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
+  const [localStorageValue, SetlocalStorageValue] = useState("");
   const {
     firstname,
     middlename,
     lastname,
     email,
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-    phone,
-    address,
-    DOB,
-=======
     contactcountry,
     contactnumber,
     houseno,
@@ -54,7 +41,6 @@ const Formone = () => {
     city,
     pincode,
     dob,
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
     fathername,
     mothername,
     gender,
@@ -72,48 +58,19 @@ const Formone = () => {
   };
 
   const AddData = async (userData) => {
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-
-    // const add = await axios.post(`${URL}/users/login`, userData);
-    // setLoginTextChange("Please Wait...");
-    try {
-      const add = await axios.post(`${URL}`, userData);
-      if (add.status == 200) {
-=======
     alert();
     // const add = await axios.post(`${URL}/users/login`, userData);
     // setLoginTextChange("Please Wait...");
     try {
-=======
-    alert();
-    // const add = await axios.post(`${URL}/users/login`, userData);
-    // setLoginTextChange("Please Wait...");
-    try {
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
       const add = await axios.post(
         `${URL}/formeducation/AddFormData`,
         userData
       );
       if (add.status === 201) {
-<<<<<<< HEAD
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
         const okcheck = await add.data;
         const okcheck2=okcheck.data;
         const getid_fromdata=okcheck2._id;
         console.log(okcheck);
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-        // localStorage.setItem("token", okcheck.token);
-        // SetlocalStorageValue(localStorage.getItem("token"));
-        // toast.success("LoginSuccessful...");
-
-        navigate("/exam");
-=======
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
          localStorage.setItem("token", okcheck.token);
          SetlocalStorageValue(localStorage.getItem("token"));
         // const config = {
@@ -124,10 +81,6 @@ const Formone = () => {
         // };
         toast.success("Successfully ...");
         navigate(`/form-two/${getid_fromdata}`);
-<<<<<<< HEAD
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
       }
     } catch (error) {
       // setLoginClick('');
@@ -142,11 +95,6 @@ const Formone = () => {
       middlename,
       lastname,
       email,
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-      phone,
-      address,
-      DOB,
-=======
       contactcountry,
       contactnumber,
       houseno,
@@ -154,7 +102,6 @@ const Formone = () => {
       city,
       pincode,
       dob,
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
       fathername,
       mothername,
       gender,
@@ -164,12 +111,6 @@ const Formone = () => {
       domicile,
       cast,
     } = values;
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-    console.log(values);
-=======
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
 
     if (
       !firstname ||
@@ -199,7 +140,6 @@ const Formone = () => {
       return;
     }
 
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
     const add1 = AddData(values);
   };
   return (
@@ -237,13 +177,6 @@ const Formone = () => {
                   id="middlename"
                   placeholder="Enter Middle Name"
                   name="middlename"
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                  
-=======
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   onChange={handleChange}
                 />
               </div>
@@ -285,31 +218,22 @@ const Formone = () => {
               </div>
               <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">
-                  {/* <select
+                  <select
                     class="form-select"
                     name="contactcountry"
-                    value={phone}
+                    value={contactcountry}
                     onChange={handleChange}
                   >
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                    <option value="">+91</option>
-                    <option value="">+92</option>
-                  </select> */}
-=======
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                     <option>Select</option>
                     <option value="91">+91</option>
                     <option value="92">+92</option>
                   </select>
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
                 </span>
                 <input
                   type="text"
                   class="form-control"
-                  name="phone"
-                  value={phone}
+                  name="contactnumber"
+                  value={contactnumber}
                   onChange={handleChange}
                 />
               </div>
@@ -318,27 +242,17 @@ const Formone = () => {
                   Address:
                 </label>
                 <input
-                  value={address}
+                  value={houseno}
                   type="text"
                   className="form-control"
                   id="houseno"
                   placeholder="House No"
-                  name="address"
+                  name="houseno"
                   required
                   onChange={handleChange}
                 />
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                {/* <input
-                  value={road}
-=======
                 <input
                   value={street}
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
-                <input
-                  value={street}
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   type="text"
                   className="form-control mt-3"
                   id="street"
@@ -346,8 +260,8 @@ const Formone = () => {
                   name="street"
                   required
                   onChange={handleChange}
-                /> */}
-                {/* <input
+                />
+                <input
                   value={city}
                   type="text"
                   className="form-control mt-3"
@@ -356,8 +270,8 @@ const Formone = () => {
                   name="city"
                   required
                   onChange={handleChange}
-                /> */}
-                {/* <input
+                />
+                <input
                   value={pincode}
                   type="number"
                   className="form-control mt-3"
@@ -366,19 +280,19 @@ const Formone = () => {
                   name="pincode"
                   required
                   onChange={handleChange}
-                /> */}
+                />
               </div>
               <div className="mb-3 mt-3">
                 <label for="dob" className="form-label">
                   Date of Birth:
                 </label>
                 <input
-                  value={DOB}
+                  value={dob}
                   type="date"
                   className="form-control"
                   id="calander"
                   placeholder="Enter Dob"
-                  name="DOB"
+                  name="dob"
                   required
                   onChange={handleChange}
                 />
@@ -424,16 +338,8 @@ const Formone = () => {
                   value={gender}
                   onChange={handleChange}
                 >
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                  <option >Select</option>
-                  <option  value="male">Male</option>
-=======
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   <option>Select</option>
                   <option value="male">Male</option>
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
                   <option value="female">Female</option>
                 </select>
               </div>
@@ -446,16 +352,8 @@ const Formone = () => {
                   name="maritalstatus"
                   value={maritalstatus}
                   onChange={handleChange}
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                > <option >Select</option>
-
-=======
                 >
                   <option>Select</option>
-<<<<<<< HEAD
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   <option value="married">Married</option>
                   <option value="unmarried" selected>
                     Un Married
@@ -471,16 +369,8 @@ const Formone = () => {
                   name="disability"
                   value={disability}
                   onChange={handleChange}
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                > <option >Select</option>
-
-=======
                 >
                   <option>Select</option>
-<<<<<<< HEAD
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   <option value="yes">Yes</option>
                   <option value="no" selected>
                     No
@@ -496,16 +386,8 @@ const Formone = () => {
                   name="category"
                   value={category}
                   onChange={handleChange}
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                > <option >Select</option>
-
-=======
                 >
                   <option>Select</option>
-<<<<<<< HEAD
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   <option value="general">General </option>
                   <option selected value="GENERAL">
                     General
@@ -525,16 +407,8 @@ const Formone = () => {
                   name="domicile"
                   value={domicile}
                   onChange={handleChange}
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                > <option >Select</option>
-
-=======
                 >
                   <option>Select</option>
-<<<<<<< HEAD
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   <option value="MP">MP </option>
                   <option value="OTHER" selected>
                     OTHER
@@ -548,25 +422,12 @@ const Formone = () => {
                 </label>
                 <select
                   class="form-select"
-                 
+                  name="cast"
                   value={cast}
                   onChange={handleChange}
                 >
-<<<<<<< HEAD
-<<<<<<< HEAD:admin/src/components/pages/Formone.js
-                  <option selected value="GENERAL" name="cast">
-                    General{" "}
-                  </option>
-                  <option >Select</option>
-
-=======
                   <option>Select</option>
                   <option value="GENERAL">General </option>
->>>>>>> a6d5c810e116afdf5ca5a47914008aa3eb17c219:admin/src/pages/Formone.js
-=======
-                  <option>Select</option>
-                  <option value="GENERAL">General </option>
->>>>>>> c5e0f8e5fcfc02b68accdb886bcd0f0ff7889353
                   <option value="OBC">OBC</option>
                   <option value="ST">ST</option>
                   <option value="SC">SC</option>
