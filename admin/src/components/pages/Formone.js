@@ -2,20 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-const URL = "http://localhost:5000/api/v1";
+const URL = "http://localhost:4001/api/v1/basic-info";
 
 const Formone = () => {
   const initialState = {
-    fname: "",
-    mname: "",
-    lname: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
     email: "",
-    contact: "",
-    houseno: "",
-    road: "",
-    city: "",
-    pincode: "",
-    dob: "",
+    phone: "",
+    address: "",
+    DOB: "",
     fathername: "",
     mothername: "",
     gender: "",
@@ -27,19 +24,14 @@ const Formone = () => {
   };
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
-  const [localStorageValue, SetlocalStorageValue] = useState("");
   const {
-    fname,
-    mname,
-    lname,
+    firstname,
+    middlename,
+    lastname,
     email,
-    contactcountry,
-    contactnumber,
-    houseno,
-    road,
-    city,
-    pincode,
-    dob,
+    phone,
+    address,
+    DOB,
     fathername,
     mothername,
     gender,
@@ -57,17 +49,19 @@ const Formone = () => {
   };
 
   const AddData = async (userData) => {
+
     // const add = await axios.post(`${URL}/users/login`, userData);
     // setLoginTextChange("Please Wait...");
     try {
-      const add = await axios.post(`${URL}/users/login`, userData);
+      const add = await axios.post(`${URL}`, userData);
       if (add.status == 200) {
         const okcheck = await add.data;
         console.log(okcheck);
-        localStorage.setItem("token", okcheck.token);
-        SetlocalStorageValue(localStorage.getItem("token"));
-        toast.success("LoginSuccessful...");
-        navigate("/form-two");
+        // localStorage.setItem("token", okcheck.token);
+        // SetlocalStorageValue(localStorage.getItem("token"));
+        // toast.success("LoginSuccessful...");
+
+        navigate("/exam");
       }
     } catch (error) {
       // setLoginClick('');
@@ -77,17 +71,13 @@ const Formone = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const {
-      fname,
-      mname,
-      lname,
+      firstname,
+      middlename,
+      lastname,
       email,
-      contactcountry,
-      contactnumber,
-      houseno,
-      road,
-      city,
-      pincode,
-      dob,
+      phone,
+      address,
+      DOB,
       fathername,
       mothername,
       gender,
@@ -97,34 +87,7 @@ const Formone = () => {
       domicile,
       cast,
     } = values;
-    if (
-      !fname ||
-      !lname ||
-      !email ||
-      !contactcountry ||
-      !contactnumber ||
-      !houseno ||
-      !road ||
-      !city ||
-      !pincode ||
-      !dob ||
-      !fathername ||
-      !mothername ||
-      !gender ||
-      !maritalstatus ||
-      !disability ||
-      !category ||
-      !domicile ||
-      !cast
-    ) {
-      toast.error("Please fill out all fields");
-      return;
-    }
-    if (contactnumber.length > 10) {
-      toast.error("Please Enter Less Number . Not More Then 10 Digit");
-      return;
-    }
-
+    console.log(values);
     const add1 = AddData(values);
   };
   return (
@@ -145,8 +108,8 @@ const Formone = () => {
                   className="form-control"
                   id="fname"
                   placeholder="Enter First Name"
-                  name="fname"
-                  value={fname}
+                  name="firstname"
+                  value={firstname}
                   required
                   onChange={handleChange}
                 />
@@ -157,12 +120,12 @@ const Formone = () => {
                 </label>
                 <input
                   type="text"
-                  value={mname}
+                  value={middlename}
                   className="form-control"
                   id="mname"
                   placeholder="Enter Middle Name"
-                  name="mname"
-                  required
+                  name="middlename"
+                  
                   onChange={handleChange}
                 />
               </div>
@@ -171,12 +134,12 @@ const Formone = () => {
                   Last name:
                 </label>
                 <input
-                  value={lname}
+                  value={lastname}
                   type="text"
                   className="form-control"
                   id="lname"
                   placeholder="Enter Last Name"
-                  name="lname"
+                  name="lastname"
                   required
                   onChange={handleChange}
                 />
@@ -204,21 +167,21 @@ const Formone = () => {
               </div>
               <div class="input-group mb-3 input-group-sm">
                 <span class="input-group-text">
-                  <select
+                  {/* <select
                     class="form-select"
                     name="contactcountry"
-                    value={contactcountry}
+                    value={phone}
                     onChange={handleChange}
                   >
                     <option value="">+91</option>
                     <option value="">+92</option>
-                  </select>
+                  </select> */}
                 </span>
                 <input
                   type="text"
                   class="form-control"
-                  name="contactnumber"
-                  value={contactnumber}
+                  name="phone"
+                  value={phone}
                   onChange={handleChange}
                 />
               </div>
@@ -227,16 +190,16 @@ const Formone = () => {
                   Address:
                 </label>
                 <input
-                  value={houseno}
+                  value={address}
                   type="text"
                   className="form-control"
                   id="houseno"
                   placeholder="House No"
-                  name="houseno"
+                  name="address"
                   required
                   onChange={handleChange}
                 />
-                <input
+                {/* <input
                   value={road}
                   type="text"
                   className="form-control mt-3"
@@ -245,8 +208,8 @@ const Formone = () => {
                   name="road"
                   required
                   onChange={handleChange}
-                />
-                <input
+                /> */}
+                {/* <input
                   value={city}
                   type="text"
                   className="form-control mt-3"
@@ -255,8 +218,8 @@ const Formone = () => {
                   name="city"
                   required
                   onChange={handleChange}
-                />
-                <input
+                /> */}
+                {/* <input
                   value={pincode}
                   type="number"
                   className="form-control mt-3"
@@ -265,19 +228,19 @@ const Formone = () => {
                   name="pincode"
                   required
                   onChange={handleChange}
-                />
+                /> */}
               </div>
               <div className="mb-3 mt-3">
                 <label for="dob" className="form-label">
                   Date of Birth:
                 </label>
                 <input
-                  value={dob}
+                  value={DOB}
                   type="date"
                   className="form-control"
                   id="calander"
                   placeholder="Enter Dob"
-                  name="dob"
+                  name="DOB"
                   required
                   onChange={handleChange}
                 />
@@ -323,7 +286,8 @@ const Formone = () => {
                   value={gender}
                   onChange={handleChange}
                 >
-                  <option value="male">Male</option>
+                  <option >Select</option>
+                  <option  value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
               </div>
@@ -336,7 +300,8 @@ const Formone = () => {
                   name="maritalstatus"
                   value={maritalstatus}
                   onChange={handleChange}
-                >
+                > <option >Select</option>
+
                   <option value="married">Married</option>
                   <option value="unmarried" selected>
                     Un Married
@@ -352,7 +317,8 @@ const Formone = () => {
                   name="disability"
                   value={disability}
                   onChange={handleChange}
-                >
+                > <option >Select</option>
+
                   <option value="yes">Yes</option>
                   <option value="no" selected>
                     No
@@ -368,7 +334,8 @@ const Formone = () => {
                   name="category"
                   value={category}
                   onChange={handleChange}
-                >
+                > <option >Select</option>
+
                   <option value="general">General </option>
                   <option selected value="GENERAL">
                     General
@@ -388,7 +355,8 @@ const Formone = () => {
                   name="domicile"
                   value={domicile}
                   onChange={handleChange}
-                >
+                > <option >Select</option>
+
                   <option value="MP">MP </option>
                   <option value="OTHER" selected>
                     OTHER
@@ -402,13 +370,15 @@ const Formone = () => {
                 </label>
                 <select
                   class="form-select"
-                  name="cast"
+                 
                   value={cast}
                   onChange={handleChange}
                 >
-                  <option selected value="GENERAL">
+                  <option selected value="GENERAL" name="cast">
                     General{" "}
                   </option>
+                  <option >Select</option>
+
                   <option value="OBC">OBC</option>
                   <option value="ST">ST</option>
                   <option value="SC">SC</option>
