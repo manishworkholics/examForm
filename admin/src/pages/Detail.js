@@ -13,7 +13,7 @@ const Detail = () => {
                     <div className='col-6'>
                         <div class="card mb-2">
                             <div class="card-body">
-                                <img src={require("../../img/flower.jpg")} alt='xyz'/>
+                                <img src={require("../img/flower.jpg")} alt='xyz'/>
                                 <h4 class="card-title">{data.name}</h4>
                                 <p class="card-text">{data.price}</p>
                                 <p class="card-text">{data.description}</p>
