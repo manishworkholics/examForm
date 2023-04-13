@@ -11,7 +11,7 @@ const initialState = {
   email: "",
   password: "",
 };
-const Login = () => {
+const ForgetPassword = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState(initialState);
   const [localStorageValue, SetlocalStorageValue] = useState("");
@@ -75,7 +75,7 @@ const Login = () => {
         <div className="row ">
           <div className="col-md-4"></div>
           <div className="col-md-4 middleform">
-            <h2 className="">Login Form</h2>
+            <h2 className="">Forget Password</h2>
             {/* <div className="forminsideimg ">
               <img src={logo} alt="image" className="w-100" />
             </div> */}
@@ -89,11 +89,11 @@ const Login = () => {
                   labelText="Enter Email"
                 />
                 <FormRow
-                  type="password"
-                  name="password"
-                  value={values.password}
+                  type="number"
+                  name="phone"
+                  value={values.phone}
                   handleChange={handleChange}
-                  labelText="Enter Password"
+                  labelText="Enter Mobile Number"
                 />
                 {/* <div class=" formcked">
                   <div>
@@ -115,17 +115,16 @@ const Login = () => {
                   </div>
                 </div> */}
                 <button type="submit" className="custombutton">
-                  {loginclick !== "" ? "Please Wait ..." : "Login"}
+                  {loginclick !== "" ? "Please Wait ..." : "Submit"}
                 </button>
-               <div className="" style={{margin:"15px",color:"black"}}><Link to='/forgetpassword'>Forget Password</Link> </div>
               </form>
             </div>
-            <div className="newregister">
+            {/* <div className="newregister">
               New User ? &nbsp;&nbsp;
-              <Link to="/studentRegistration">
+              <Link to="/register">
                 <span > Register Here</span>
               </Link>
-            </div>
+            </div> */}
           </div>
           <div className="col-md-4"></div>
         </div>
@@ -134,4 +133,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgetPassword;
