@@ -1,5 +1,96 @@
-const {user} = require('../Modal/formmodal')
+const {user,universityAdmin,program, college} = require('../Modal/formmodal')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+// const nodemailer = require('nodemailer')
+// const {google} = require('googleapis')
+
+
+exports.registerUniversityAdmin = async(req,res)=>{
+  const {firstName,middleName,lastName,email,phone,alternatePhone,post,photo,
+         permissions,isBlocked,username,password,houseNo,street,district,country} = req.body
+  const userExist = await universityAdmin.findOne({email:email})       
+  if(userExist){
+    return res.status(400).json({error : "use different email"})
+  }
+  const userName = await universityAdmin.findOne({username:username})
+  if(userName){
+    return res.status(400).json({error:"Username is taken"})
+  }        
+  try {
+      const adminData = new universityAdmin({firstName,middleName,lastName,email,phone,alternatePhone,post,
+                            photo,permissions,isBlocked,username,password,houseNo,street,district,country})
+      const token = jwt.sign({adminData_id: adminData.id},process.env.JWT_SECRET_KEY)
+      adminData.token = token    
+      await adminData.save()
+      res.status(201).json(adminData)    
+  } catch (error) {
+      console.log(error)
+      res.status(400).json({error:"Server Issue"})
+  }    
+}
+
+exports.loginUniversityAdmin = async(req,res)=>{
+    try {
+      const {username,password} = req.body
+      if (!username || !password) {
+        return res.status(400).json({ error: "please fill the data" });
+      }      
+      const userlogin = await universityAdmin.findOne({ username: username });
+      if(!userlogin){
+        return res.status(402).json({error :"username not found" })
+      }
+      const isMatch = await bcrypt.compare(password,userlogin.password)
+
+      if(!isMatch){
+        return res.json({ error : "Invalid Credentials" });
+      }
+      else {
+        res.status(400).json({message : "Login Success"})
+        
+      }
+    } catch (error) {
+      console.log(error)
+    }
+}
+
+exports.addProgram = async(req,res)=>{
+    const {title,description,code,session,eligibility,isEnabled,
+          fees,meritPreprationCriteria,isDuplicate} = req.body
+    const programExist = await program.findOne({code : code})
+    if(programExist){
+      return res.status(400).json({error : "Program already exists"})
+    }      
+    try {
+      const programData = new program({title,description,code,session,eligibility,isEnabled,
+                                       fees,meritPreprationCriteria,isDuplicate})
+      const token = jwt.sign({programData_id: programData.id},process.env.JWT_SECRET_KEY)
+      programData.token = token                                    
+      await programData.save()
+      res.status(201).json(programData)                                 
+    } catch (error) {
+      console.log(error)
+      res.status(400).json({error:"Server Issue"})
+    }
+}
+
+exports.addCollege = async(req,res)=>{
+  const{name,email,contact,address,district,availablePrograms,
+        seatsAvailable,collegeAvailable} = req.body
+  const collegeExist = await college.findOne({name:name}||{email:email})
+  if(collegeExist){
+    res.status(401).json({error:"College already exist"})
+  }      
+  try {
+    const collegeData = new college({name,email,contact,address,district,
+                                     availablePrograms,seatsAvailable,collegeAvailable})
+    await collegeData.save()
+    res.status(200).json({message:"College added successfully"})
+  } catch (error) {
+    console.log(error)
+    res.status(400).json({error : "Check all the fields properly"})
+  }      
+}
+
 exports.basicInfo = async(req,res)=>{
     const {firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,
         gender,maritalstatus,disability,category,domicile,cast,captcha,yearOfPassing10th,school10th,board10th,
@@ -31,3 +122,23 @@ exports.editInfo = async(req,res)=>{
     )
     res.send(data)
 }
+
+
+exports.sendEmail = async (req, res) => {
+    const { email, subject, message } = req.body;
+  
+    const mailOptions = {
+      from: 'sarthaksolanki001@gmail.com',
+      to: email,
+      subject: subject,
+      text: message
+    };
+  
+    try {
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ message: "Email sent" });
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ error: "error occured" });
+    }
+  };

@@ -1,66 +1,191 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+
+
+const universityAdminSchema = new mongoose.Schema({
+    firstName : {
+        type : String,
+    },
+    middleName : {
+        type : String
+    },
+    lastName : {
+        type : String
+    },
+    email : {
+        type : String
+    },
+    phone : {
+        type: Number
+    },
+    alternatePhone :{
+        type : Number
+    },
+    post : {
+        type : String
+    },
+    photo : {
+        type : String
+    },
+    permissions : [{
+        type : String
+    }],
+    isBlocked : {
+        type : Boolean
+    },
+    username : {
+        type : String
+    },
+    password : {
+        type : String
+    },
+    houseNo : {
+        type : String
+    },
+    street : {
+        type : String
+    },
+    district : {
+        type : String
+    },
+    country : {
+        type : String
+    }, 
+    token : {
+        type : String
+    }
+})
+universityAdminSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 10);
+        this.confirm_password = await bcrypt.hash(this.password, 10);
+    }
+    next();
+})
+const collegeSchema = new mongoose.Schema({
+    name : {
+        type : String
+    },
+    email : {
+        type : String
+    },
+    contact : {
+        type : Number
+    },
+    address : {
+        type : String
+    },
+    district : {
+        type : String
+    },
+    availablePrograms : [{
+        type : String
+    }],
+    seatsAvailable : {
+        type : Number
+    },
+    collegeAvailable : {
+        type : Boolean
+    },
+})
+const programSchema = new mongoose.Schema({
+    title : {
+        type : String
+    },
+    description : {
+        type : String
+    },
+    code : {
+        type : String
+    },
+    session : [{
+        from : { type : Date },
+        to :{ type : Date }
+    }],
+    eligibility :{
+        type : String
+    },
+    isEnabled : {
+        type : Boolean
+    },
+    fees : {
+        type : String
+    },
+    meritPreprationCriteria : {
+        type : String
+    },
+    isDuplicate : {
+        type : Boolean
+    },
+    token : {
+        type : String
+    }
+})
 
 
 const formSchema = new mongoose.Schema({
-    firstname : {
-        type: String,
+    firstnameStudent : {
+        type: String
     },
-    middlename : {
-        type : String,
+    middlenameStudent : {
+        type : String
     },
-    lastname : {
-        type: String,
+    lastnameStudent : {
+        type: String
     },
     email : {
-        type: String,
+        type: String
     },
     phone : {
-        type: String,
+        type: String
+    },
+    alternatePhone :{
+        type : String
     },
     address : {
-        type: String,
+        type: String
     },
     DOB : {
-        type: String,
+        type: String
     },
     fathername : {
-        type: String,
+        type: String
     },
     mothername : {
-        type: String,
+        type: String
     },
     gender : {
-        type: String,
+        type: String
     },
     maritalstatus : {
-        type: String,
+        type: String
     },
     disability: {
-        type: String,
+        type: String
     },
     category : {
-        type: String,
+        type: String
     },
     domicile : {
-        type: String,
+        type: String
     },
     cast : {
-        type: String,
+        type: String
     },
     captcha :{
         type : String,
     },
     yearOfPassing10th :{
-        type : String,
+        type : String
     },
     school10th :{
-        type : String,
+        type : String
     },
     board10th :{
-        type : String,
+        type : String
     },
     rollNo10th :{
-        type : String,
+        type : String
     },
     subjectDetails10th :[{
         Xsubject1 :{ type : String},
@@ -175,7 +300,10 @@ const formSchema = new mongoose.Schema({
     updated_at: { type: Date, default: Date.now },
 })
 
-
+const universityAdmin = mongoose.model('registerAdmin', universityAdminSchema)
+const program = mongoose.model('program',programSchema)
+const college = mongoose.model('college', collegeSchema)
 const user = mongoose.model('form', formSchema)
 
-module.exports = { user }
+
+module.exports = { user , universityAdmin, program, college}
