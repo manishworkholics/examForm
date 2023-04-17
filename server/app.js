@@ -83,11 +83,11 @@ const updateproduct = require('./Route/userRoute')
 const registerUniversityAdmin = require('./Route/formRoute')
 const basicInfo = require('./Route/formRoute')
 const editInfo = require('./Route/formRoute')
+const sendEmail = require('./Route/formRoute')
 const loginUniversityAdmin = require('./Route/formRoute')
 const addProgram = require('./Route/formRoute');
 const addCollege  = require('./Route/formRoute');
-const send_mail = require('./Route/formRoute')
-const addApplicant = require('./Route/formRoute')
+
 
 app.use('/api/v1', register)
 app.use('/api/v1', showuser)
@@ -104,11 +104,10 @@ app.use('/api/v1', updateproduct)
 app.use('/api/v1', registerUniversityAdmin)
 app.use('/api/v1', basicInfo)
 app.use('/api/v1', editInfo)
+app.use('/api/v1', sendEmail)
 app.use('/api/v1', loginUniversityAdmin)
 app.use('/api/v1', addProgram)
 app.use('/api/v1', addCollege)
-app.use('/api/v1', send_mail)
-app.use('/api/v1', addApplicant)
 
 const upload = multer({
     storage: multer.diskStorage({
