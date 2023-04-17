@@ -6,6 +6,48 @@ const app = express()
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const path = require('path');
+// const nodemailer = require('nodemailer')
+// const { google } = require ('googleapis')
+// const config = require('./config/config')
+// const OAuth2 = google.auth.OAuth2
+
+// const OAuth2_client = new OAuth2(config.clientId,config.clientSecret)
+// OAuth2_client.setCredentials({ refresh_token : config.refreshToken})
+
+// function send_mail(name, recipitent){
+//   const accessToken = OAuth2_client.getAccessToken()
+//   const transporter = nodemailer.createTransport({
+//     service : 'gmail',
+//     auth :{
+//       type : 'OAuth2',
+//       user : config.user,
+//       clientId : config.clientId,
+//       clientSecret : config.clientSecret,
+//       refreshToken : config.refreshToken,
+//       accessToken : config.accessToken
+//     }
+//   })
+
+//   const mail_options = {
+//     from : `Sarthak <${config.user}>`,
+//     to : recipitent, 
+//     subject : "Message from Sarthak",
+//     text : "Hello"
+//   }
+
+//   transporter.sendMail(mail_options, function(error,result){
+//     if(error){
+//       console.log('Error :', error)
+//     }
+//     else{
+//       console.log("success", result)
+//     }
+//     transporter.close()
+//   })
+// }
+
+// send_mail('Sam', 'sarthaksolanki0303@gmail.com')
+
 
 // app.use(cors({ origin: "http://206.189.130.102" }))
 app.use(function (req, res, next) {
@@ -41,11 +83,11 @@ const updateproduct = require('./Route/userRoute')
 const registerUniversityAdmin = require('./Route/formRoute')
 const basicInfo = require('./Route/formRoute')
 const editInfo = require('./Route/formRoute')
-const sendEmail = require('./Route/formRoute')
 const loginUniversityAdmin = require('./Route/formRoute')
 const addProgram = require('./Route/formRoute');
 const addCollege  = require('./Route/formRoute');
-
+const send_mail = require('./Route/formRoute')
+const addApplicant = require('./Route/formRoute')
 
 app.use('/api/v1', register)
 app.use('/api/v1', showuser)
@@ -62,10 +104,11 @@ app.use('/api/v1', updateproduct)
 app.use('/api/v1', registerUniversityAdmin)
 app.use('/api/v1', basicInfo)
 app.use('/api/v1', editInfo)
-app.use('/api/v1', sendEmail)
 app.use('/api/v1', loginUniversityAdmin)
 app.use('/api/v1', addProgram)
 app.use('/api/v1', addCollege)
+app.use('/api/v1', send_mail)
+app.use('/api/v1', addApplicant)
 
 const upload = multer({
     storage: multer.diskStorage({

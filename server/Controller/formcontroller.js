@@ -1,11 +1,89 @@
-
-
-
-const {user,universityAdmin,program, college} = require('../Modal/formmodal')
+const {user,universityAdmin,program, college,mail,applicant} = require('../Modal/formmodal')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-// const nodemailer = require('nodemailer')
-// const {google} = require('googleapis')
+const nodemailer = require('nodemailer')
+const { google } = require ('googleapis')
+const config = require('../config/config')
+const OAuth2 = google.auth.OAuth2
+const OAuth2_client = new OAuth2(config.clientId,config.clientSecret)
+
+OAuth2_client.setCredentials({ refresh_token : config.refreshToken})
+
+const transporter = nodemailer.createTransport({
+  service : 'gmail',
+  auth :{
+    type : 'OAuth2',
+    user : config.user,
+    clientId : config.clientId,
+    clientSecret : config.clientSecret,
+    refreshToken : config.refreshToken,
+  }
+})
+
+exports.send_mail = async(req,res)=>{
+  const {recipitent,subject,text} = req.body
+  // const accessToken = OAuth2_client.getAccessToken()
+  
+  const html = `
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>${subject}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style type="text/css">
+        /* Put your styles here */
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          line-height: 1.4;
+          color: #333;
+        }
+        h1 {
+          font-size: 28px;
+          margin-bottom: 20px;
+        }
+        p {
+          margin-bottom: 20px;
+        }
+        .button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Hello!</h1>
+      <p>${text}</p>
+      <p>Here's a button:</p>
+      <p><a href="#" class="button">Click me!</a></p>
+    </body>
+  </html>
+`;
+  const mail_options = {
+    from : `Sarthak <${config.user}>`,
+    to : recipitent, 
+    subject : subject,
+    html : html
+  }
+
+  transporter.sendMail(mail_options, function(error,result){
+    if(error){
+      console.log('Error :', error)
+      res.status(400).json({error:"unable to send mail"})
+    }
+    else{
+      res.status(200).json({message : result })
+    }
+    transporter.close()
+  })
+}
+
 
 
 exports.registerUniversityAdmin = async(req,res)=>{
@@ -91,6 +169,22 @@ exports.addCollege = async(req,res)=>{
   }      
 }
 
+exports.addApplicant = async(req,res)=>{
+  const{firstname,middlename,lastname,email,phone,alternatePhone,
+        DOB,username,password,confirmPassword} = req.body
+  if(!firstname||!lastname||!email||!phone||!DOB||!username||!password||!confirmPassword){
+     return res.status(400).json({error: "Please fill the mandatory fields"})
+  }
+  try {
+    const applicantData = new applicant({firstname,middlename,lastname,email,phone,alternatePhone,
+                                          DOB,username,password,confirmPassword})
+    await applicantData.save()
+    return res.status(201).json(applicantData)                                     
+  } catch (error) {
+    console.log(error)
+    return res.status(400).json({error :"an error occured"})
+  }      
+}
 
 exports.basicInfo = async(req,res)=>{
     const {firstname,middlename,lastname,email,phone,address,DOB,fathername,mothername,

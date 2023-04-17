@@ -121,187 +121,218 @@ const programSchema = new mongoose.Schema({
 })
 
 
-const formSchema = new mongoose.Schema({
-    firstnameStudent : {
-        type: String
+const applicantSchema = new mongoose.Schema({
+    firstname : {
+        type: String,
+        require : true
     },
-    middlenameStudent : {
+    middlename : {
         type : String
     },
-    lastnameStudent : {
-        type: String
+    lastname : {
+        type: String,
+        require : true
     },
     email : {
-        type: String
+        type: String,
+        require : true
     },
     phone : {
-        type: String
+        type: String,
+        require : true
     },
     alternatePhone :{
         type : String
     },
-    address : {
-        type: String
-    },
+    // address : {
+    //     type: String
+    // },
     DOB : {
-        type: String
+        type: String,
+        require : true
     },
-    fathername : {
-        type: String
-    },
-    mothername : {
-        type: String
-    },
-    gender : {
-        type: String
-    },
-    maritalstatus : {
-        type: String
-    },
-    disability: {
-        type: String
-    },
-    category : {
-        type: String
-    },
-    domicile : {
-        type: String
-    },
-    cast : {
-        type: String
-    },
-    captcha :{
+    username : {
         type : String,
+        require : true
     },
-    yearOfPassing10th :{
-        type : String
-    },
-    school10th :{
-        type : String
-    },
-    board10th :{
-        type : String
-    },
-    rollNo10th :{
-        type : String
-    },
-    subjectDetails10th :[{
-        Xsubject1 :{ type : String},
-        Xmarks1 :{type : String},
-        Xsubject2 :{ type : String},
-        Xmarks2 :{type : String},
-        Xsubject3 :{ type : String},
-        Xmarks3 :{type : String},
-        Xsubject4 :{ type : String},
-        Xmarks4 :{type : String},
-        Xsubject5 :{ type : String},
-        Xmarks5 :{type : String}
-    }],
-    totalMarks10th :{
+    password : {
         type : String,
+        require : true
     },
-    percentage10th :{
+    confirmPassword : {
         type : String,
+        require : true
     },
-    yearOfPassing12th :{
-        type : Date,
-    },
-    school12th :{
-        type : String,
-    },
-    board12th :{
-        type : String,
-    },
-    rollNo12th :{
-        type : String,
-    },
-    subjectDetails12th :[{
-        XIIsubject1 :{ type : String},
-        XIImarks1 :{type : String},
-        XIIsubject2 :{ type : String},
-        XIImarks2 :{type : String},
-        XIIsubject3 :{ type : String},
-        XIImarks3 :{type : String},
-        XIIsubject4 :{ type : String},
-        XIImarks4 :{type : String},
-        XIIsubject5 :{ type : String},
-        XIImarks5 :{type : String}
-    }],
-    totalMarks12th :{
-        type : String,
-    },
-    percentage12th :{
-        type : String,
-    },
-    yearOfPassingdiploma :{
-        type : String,
-    },
-    universitydiploma :{
-        type : String,
-    },
-    enrollmentnodiploma :{
-        type : String,
-    },
-    finalsemsubjectdiploma :[{
-        diplomasubject1 :{ type : String},
-        diplomamarks1 :{type : String},
-        diplomasubject2 :{ type : String},
-        diplomamarks2 :{type : String},
-        diplomasubject3 :{ type : String},
-        diplomamarks3 :{type : String},
-        diplomasubject4 :{ type : String},
-        diplomamarks4 :{type : String},
-        diplomasubject5 :{ type : String},
-        diplomamarks5 :{type : String}
-    }],
-    totalMarksdiploma :{
-        type : String,
-    },
-    percentagediploma :{
-        type : String,
-    },
-    profilePicture :{
-        type : String
-    },
-    signature :{
-        type : String
-    },
-    domicileCertificate :{
-        type : String
-    },
-    marksheet10th :{
-        type : String
-    },
-    marksheet12th :{
-        type : String
-    },
-    aadharCard :{
-        type : String
-    },
-    selectDepartment :{
-        type : String
-    },
-    selectBranch :{
-        type : String
-    },
-    yeargap : {
-        type : String
-    },
-    applicationfee :{
-        type : String
-    },
-    token :{
-        type : String
-    },
+    // fathername : {
+    //     type: String
+    // },
+    // mothername : {
+    //     type: String
+    // },
+    // gender : {
+    //     type: String
+    // },
+    // maritalstatus : {
+    //     type: String
+    // },
+    // disability: {
+    //     type: String
+    // },
+    // category : {
+    //     type: String
+    // },
+    // domicile : {
+    //     type: String
+    // },
+    // cast : {
+    //     type: String
+    // },
+    // captcha :{
+    //     type : String,
+    // },
+    // yearOfPassing10th :{
+    //     type : String
+    // },
+    // school10th :{
+    //     type : String
+    // },
+    // board10th :{
+    //     type : String
+    // },
+    // rollNo10th :{
+    //     type : String
+    // },
+    // subjectDetails10th :[{
+    //     Xsubject1 :{ type : String},
+    //     Xmarks1 :{type : String},
+    //     Xsubject2 :{ type : String},
+    //     Xmarks2 :{type : String},
+    //     Xsubject3 :{ type : String},
+    //     Xmarks3 :{type : String},
+    //     Xsubject4 :{ type : String},
+    //     Xmarks4 :{type : String},
+    //     Xsubject5 :{ type : String},
+    //     Xmarks5 :{type : String}
+    // }],
+    // totalMarks10th :{
+    //     type : String,
+    // },
+    // percentage10th :{
+    //     type : String,
+    // },
+    // yearOfPassing12th :{
+    //     type : Date,
+    // },
+    // school12th :{
+    //     type : String,
+    // },
+    // board12th :{
+    //     type : String,
+    // },
+    // rollNo12th :{
+    //     type : String,
+    // },
+    // subjectDetails12th :[{
+    //     XIIsubject1 :{ type : String},
+    //     XIImarks1 :{type : String},
+    //     XIIsubject2 :{ type : String},
+    //     XIImarks2 :{type : String},
+    //     XIIsubject3 :{ type : String},
+    //     XIImarks3 :{type : String},
+    //     XIIsubject4 :{ type : String},
+    //     XIImarks4 :{type : String},
+    //     XIIsubject5 :{ type : String},
+    //     XIImarks5 :{type : String}
+    // }],
+    // totalMarks12th :{
+    //     type : String,
+    // },
+    // percentage12th :{
+    //     type : String,
+    // },
+    // yearOfPassingdiploma :{
+    //     type : String,
+    // },
+    // universitydiploma :{
+    //     type : String,
+    // },
+    // enrollmentnodiploma :{
+    //     type : String,
+    // },
+    // finalsemsubjectdiploma :[{
+    //     diplomasubject1 :{ type : String},
+    //     diplomamarks1 :{type : String},
+    //     diplomasubject2 :{ type : String},
+    //     diplomamarks2 :{type : String},
+    //     diplomasubject3 :{ type : String},
+    //     diplomamarks3 :{type : String},
+    //     diplomasubject4 :{ type : String},
+    //     diplomamarks4 :{type : String},
+    //     diplomasubject5 :{ type : String},
+    //     diplomamarks5 :{type : String}
+    // }],
+    // totalMarksdiploma :{
+    //     type : String,
+    // },
+    // percentagediploma :{
+    //     type : String,
+    // },
+    // profilePicture :{
+    //     type : String
+    // },
+    // signature :{
+    //     type : String
+    // },
+    // domicileCertificate :{
+    //     type : String
+    // },
+    // marksheet10th :{
+    //     type : String
+    // },
+    // marksheet12th :{
+    //     type : String
+    // },
+    // aadharCard :{
+    //     type : String
+    // },
+    // selectDepartment :{
+    //     type : String
+    // },
+    // selectBranch :{
+    //     type : String
+    // },
+    // yeargap : {
+    //     type : String
+    // },
+    // applicationfee :{
+    //     type : String
+    // },
+    // token :{
+    //     type : String
+    // },
     status: { type: String, default: 0 },
     created_at: { type: Date },
     updated_at: { type: Date, default: Date.now },
 })
 
+const mailSchema = new mongoose.Schema({
+    name : {
+        type : String
+    },
+    recipitent : {
+        type : String
+    },
+    subject : {
+        type : String
+    },
+    text : {
+        type : String
+    }
+})
 const universityAdmin = mongoose.model('registerAdmin', universityAdminSchema)
 const program = mongoose.model('program',programSchema)
 const college = mongoose.model('college', collegeSchema)
-const user = mongoose.model('form', formSchema)
+const applicant = mongoose.model('form', applicantSchema)
+const mail =  mongoose.model('mail', mailSchema)
 
-
-module.exports = { user , universityAdmin, program, college}
+module.exports = { universityAdmin, program, college,mail, applicant }
