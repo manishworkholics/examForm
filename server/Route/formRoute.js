@@ -1,6 +1,7 @@
 const express = require('express')
 
-const {registerUniversityAdmin,basicInfo,editInfo,sendEmail,loginUniversityAdmin,addProgram,addCollege} = require('../Controller/formcontroller')
+const {registerUniversityAdmin,basicInfo,editInfo,
+    sendEmail,loginUniversityAdmin,addProgram,addCollege} = require('../Controller/formcontroller')
 const router = express.Router()
 
 router.route('/add-adminUniversity').post(registerUniversityAdmin)
