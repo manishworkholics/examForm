@@ -20,42 +20,40 @@ exports.registerUniversityAdmin = async (req, res) => {
     return res.status(400).json({ error: "Username is taken" })
   }
   try {
-    const adminData = new universityAdmin({
-      firstName, middleName, lastName, email, phone, alternatePhone, post,
-      photo, permissions, isBlocked, username, password, houseNo, street, district, country
-    })
-    const token = jwt.sign({ adminData_id: adminData.id }, process.env.JWT_SECRET_KEY)
-    adminData.token = token
-    await adminData.save()
-    res.status(201).json(adminData)
+      const adminData = new universityAdmin({firstName,middleName,lastName,email,phone,alternatePhone,post,
+                            photo,permissions,isBlocked,username,password,houseNo,street,district,country})
+      const token = jwt.sign({adminData_id: adminData.id},process.env.JWT_SECRET_KEY)
+      adminData.token = token    
+      await adminData.save()
+      res.status(201).json(adminData)    
   } catch (error) {
     console.log(error)
     res.status(400).json({ error: "Server Issue" })
   }
 }
 
-exports.loginUniversityAdmin = async (req, res) => {
-  try {
-    const { username, password } = req.body
-    if (!username || !password) {
-      return res.status(400).json({ error: "please fill the data" });
-    }
-    const userlogin = await universityAdmin.findOne({ username: username });
-    if (!userlogin) {
-      return res.status(402).json({ error: "username not found" })
-    }
-    const isMatch = await bcrypt.compare(password, userlogin.password)
+exports.loginUniversityAdmin = async(req,res)=>{
+    try {
+      const {username,password} = req.body
+      if (!username || !password) {
+        return res.status(400).json({ error: "please fill the data" });
+      }      
+      const userlogin = await universityAdmin.findOne({ username: username });
+      if(!userlogin){
+        return res.status(402).json({error :"username not found" })
+      }
+      const isMatch = await bcrypt.compare(password,userlogin.password)
 
-    if (!isMatch) {
-      return res.json({ error: "Invalid Credentials" });
+      if(!isMatch){
+        return res.json({ error : "Invalid Credentials" });
+      }
+      else {
+        res.status(400).json({message : "Login Success"})
+        
+      }
+    } catch (error) {
+      console.log(error)
     }
-    else {
-      res.status(400).json({ message: "Login Success" })
-
-    }
-  } catch (error) {
-    console.log(error)
-  }
 }
 
 exports.addProgram = async (req, res) => {

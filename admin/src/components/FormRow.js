@@ -1,7 +1,7 @@
 
 const FormRow = ({ type, name, value, handleChange, labelText }) => {
     return (
-      <div className=' formrow'>
+      <div className='formrow'>
         {/* <label htmlFor={name} className=''>
           {labelText || name}
         </label> */}
