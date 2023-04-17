@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from '../assets/logodavv.png'
+// import Logo from '../assets/logodavv.png'
 const Header = () => {
 
 	return (
@@ -8,7 +8,7 @@ const Header = () => {
 			<nav className="navbar navbar-expand-lg navbar-primary  sticky-top  navbardetails">
 				<div className="container-fluid px-2 ">
 					<Link className="navbar-brand fontcolourwhite .text-white" to="/">
-{/* <img src={Logo} className="logotop img-fluid"/> */}
+						{/* <img src={Logo} className="logotop img-fluid"/> */}
 
 					</Link>
 					<button className="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
