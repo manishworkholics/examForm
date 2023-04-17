@@ -16,12 +16,11 @@ const Header = () => {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
-							<li className="nav-item"><Link className="nav-link " to="/">Home</Link></li>
-							<li className="nav-item"><Link className="nav-link " to="add-exam">Add-Exam</Link></li>
-							<li className="nav-item"><Link className="nav-link " to="add-subject">Add-Subject</Link></li>
-							<li className="nav-item"><Link className="nav-link " to="add-unit">Add-Unit</Link></li>
-							<li className="nav-item"><Link className="nav-link " to="add-chapter">Add-Chapter</Link></li>
-							<li className="nav-item"><Link className="nav-link " to="add-video">Add-Video</Link></li>
+							<li className="nav-item"><Link className="nav-link " to="/">Movies</Link></li>
+							<li className="nav-item"><Link className="nav-link " to="subscription">Subscription</Link></li>
+							<li className="nav-item"><Link className="nav-link " to="users-management">User-Management</Link></li>
+							<li className="nav-item"><Link className="nav-link " to="login">Logout</Link></li>
+							
 						</ul>
 					</div>
 				</div>
